@@ -1,0 +1,40 @@
+project:
+  name: "house-price-ml-system"
+  seed: 42
+
+paths:
+  data_dir: "data"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  models_dir: "models"
+  reports_dir: "reports"
+
+dataset:
+  name: "california_housing"
+  raw_filename: "california_housing.csv"
+
+training:
+  target: "MedHouseVal"
+  test_size: 0.15
+  val_size: 0.15
+  save_model_as: "pipeline.joblib"
+
+validation:
+  # hard checks
+  required_columns:
+    - MedInc
+    - HouseAge
+    - AveRooms
+    - AveBedrms
+    - Population
+    - AveOccup
+    - Latitude
+    - Longitude
+    - MedHouseVal
+
+  # soft checks (sanity)
+  max_missing_ratio_per_column: 0.20
+  min_rows: 1000
+
+logging:
+  level: "INFO"
