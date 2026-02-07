@@ -20,7 +20,6 @@ training:
   save_model_as: "pipeline.joblib"
 
 validation:
-  # hard checks
   required_columns:
     - MedInc
     - HouseAge
@@ -32,9 +31,18 @@ validation:
     - Longitude
     - MedHouseVal
 
-  # soft checks (sanity)
   max_missing_ratio_per_column: 0.20
   min_rows: 1000
+
+models:
+  baseline_ridge:
+    alpha: 1.0
+
+  strong_hist_gb:
+    max_depth: 6
+    learning_rate: 0.05
+    max_iter: 500
+    l2_regularization: 0.0
 
 logging:
   level: "INFO"

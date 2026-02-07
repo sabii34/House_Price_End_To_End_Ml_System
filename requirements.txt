@@ -5,3 +5,8 @@ pyyaml
 joblib
 rich
 pytest
+fastapi
+uvicorn
+pydantic
+uvicorn[standard]
+gunicorn
