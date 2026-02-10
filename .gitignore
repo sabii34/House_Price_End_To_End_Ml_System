@@ -15,6 +15,7 @@ data/raw/
 data/processed/
 models/
 reports/
+mlruns/
 
 # OS/editor
 .DS_Store

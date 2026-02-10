@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 import time
+from pathlib import Path
+import pandas as pd
 
 from src.config import load_settings
 from src.logger import get_logger
@@ -65,6 +67,18 @@ def version():
 def predict(payload: HouseFeatures):
     try:
         pred = model_service.predict_one(payload.model_dump())
+         # --- store live request for drift monitoring ---
+        cfg = __import__("yaml").safe_load(open("configs/config.yaml", "r", encoding="utf-8"))
+        live_path = Path(cfg["monitoring"]["live_file"])
+        live_path.parent.mkdir(parents=True, exist_ok=True)
+
+        row = payload.model_dump()
+        df_row = pd.DataFrame([row])
+
+        if live_path.exists():
+            df_row.to_csv(live_path, mode="a", header=False, index=False)
+        else:
+            df_row.to_csv(live_path, index=False) 
         return PredictResponse(
             prediction=pred,
             model_artifact=model_service.artifact_path,
@@ -73,4 +87,6 @@ def predict(payload: HouseFeatures):
         raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
+    
+    
 
