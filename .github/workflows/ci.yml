@@ -30,6 +30,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Generate raw dataset
+        run: |
+          python -m src.data_loading
+
+      - name: Create train/val/test splits
+        run: |
+          python -m src.split
+
       - name: Run tests
         run: |
           pytest -q
