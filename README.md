@@ -276,3 +276,13 @@ covering ML training, CI/CD, deployment on AWS, monitoring, and retraining.
 All experiments, metrics, parameters, and model versions are tracked using MLflow.
 
 ![MLflow Tracking](images/mlflow.png)
+
+## 🔄 CI/CD Pipeline (GitHub Actions)
+
+The project includes a fully automated CI pipeline that:
+
+- Runs tests
+- Trains the model
+- Builds a Docker image
+
+![CI Pipeline](images/ci_pipeline.png)
