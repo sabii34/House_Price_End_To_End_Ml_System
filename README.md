@@ -1,3 +1,8 @@
+[![CI/CD](https://github.com/sabii34/House_Price_End_To_End_Ml_System/actions/workflows/ci.yml/badge.svg)](https://github.com/sabii34/House_Price_End_To_End_Ml_System/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Docker](https://img.shields.io/badge/Docker-enabled-blue)
+![MLflow](https://img.shields.io/badge/MLflow-enabled-orange)
+
 # 🏠 House Price Prediction — End-to-End MLOps System
 
 - An industry-style, production-ready MLOps system for house price prediction, covering the complete ML lifecycle from data ingestion to automated CI/CD, containerized deployment, and monitoring.
