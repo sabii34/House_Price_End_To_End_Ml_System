@@ -270,3 +270,9 @@ docker build -t house-price-api.
 The diagram below shows the complete end-to-end MLOps architecture,
 covering ML training, CI/CD, deployment on AWS, monitoring, and retraining.
 ![System Architecture](images/architecture.png)
+
+## 🧪 Experiment Tracking (MLflow)
+
+All experiments, metrics, parameters, and model versions are tracked using MLflow.
+
+![MLflow Tracking](images/mlflow.png)
